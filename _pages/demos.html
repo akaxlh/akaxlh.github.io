@@ -147,7 +147,7 @@ author_profile: true
 
 <div class="demo-grid">
   <div class="demo-card">
-    <div class="video-container" onclick="playVideo(this)">
+    <div class="video-container">
       <video preload="none">
         <source src="{{ site.baseurl }}/demos/anime.mp4" type="video/mp4">
       </video>
@@ -158,7 +158,7 @@ author_profile: true
   </div>
 
   <div class="demo-card">
-    <div class="video-container" onclick="playVideo(this)">
+    <div class="video-container">
       <video preload="none">
         <source src="{{ site.baseurl }}/demos/carrier.mp4" type="video/mp4">
       </video>
@@ -169,7 +169,7 @@ author_profile: true
   </div>
 
   <div class="demo-card">
-    <div class="video-container" onclick="playVideo(this)">
+    <div class="video-container">
       <video preload="none">
         <source src="{{ site.baseurl }}/demos/cameo_skycastle.mp4" type="video/mp4">
       </video>
@@ -180,7 +180,7 @@ author_profile: true
   </div>
 
   <div class="demo-card">
-    <div class="video-container" onclick="playVideo(this)">
+    <div class="video-container">
       <video preload="none">
         <source src="{{ site.baseurl }}/demos/F1.mp4" type="video/mp4">
       </video>
@@ -191,7 +191,7 @@ author_profile: true
   </div>
 
   <div class="demo-card">
-    <div class="video-container" onclick="playVideo(this)">
+    <div class="video-container">
       <video preload="none">
         <source src="{{ site.baseurl }}/demos/otter.mp4" type="video/mp4">
       </video>
@@ -202,7 +202,7 @@ author_profile: true
   </div>
 
   <div class="demo-card">
-    <div class="video-container" onclick="playVideo(this)">
+    <div class="video-container">
       <video preload="none">
         <source src="{{ site.baseurl }}/demos/penguine.mp4" type="video/mp4">
       </video>
@@ -213,7 +213,7 @@ author_profile: true
   </div>
 
   <div class="demo-card">
-    <div class="video-container" onclick="playVideo(this)">
+    <div class="video-container">
       <video preload="none">
         <source src="{{ site.baseurl }}/demos/skydiving-sub.mp4" type="video/mp4">
       </video>
@@ -224,7 +224,7 @@ author_profile: true
   </div>
 
   <div class="demo-card">
-    <div class="video-container" onclick="playVideo(this)">
+    <div class="video-container">
       <video preload="none">
         <source src="{{ site.baseurl }}/demos/Spiderman_music.mp4" type="video/mp4">
       </video>
@@ -235,7 +235,7 @@ author_profile: true
   </div>
 
   <div class="demo-card">
-    <div class="video-container" onclick="playVideo(this)">
+    <div class="video-container">
       <video preload="none">
         <source src="{{ site.baseurl }}/demos/underwater2.mp4" type="video/mp4">
       </video>
@@ -246,7 +246,7 @@ author_profile: true
   </div>
 
   <div class="demo-card">
-    <div class="video-container" onclick="playVideo(this)">
+    <div class="video-container">
       <video preload="none">
         <source src="{{ site.baseurl }}/demos/xiangsheng.mp4" type="video/mp4">
       </video>
@@ -257,44 +257,54 @@ author_profile: true
   </div>
 </div>
 
-<script>
-function playVideo(container) {
-  const video = container.querySelector('video');
-  const playButton = container.querySelector('.play-button');
-  
-  // Pause all other videos first
-  document.querySelectorAll('.video-container').forEach(c => {
-    if (c !== container) {
-      const v = c.querySelector('video');
-      v.pause();
-      v.controls = false;
-      c.classList.remove('playing');
-      c.classList.remove('loading');
-    }
-  });
-  
-  // Toggle play/pause for clicked video
-  if (video.paused) {
-    container.classList.add('loading');
-    container.classList.add('playing');
-    video.controls = true;
+<script type="text/javascript">
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    var containers = document.querySelectorAll('.video-container');
     
-    video.play().then(() => {
-      container.classList.remove('loading');
-    }).catch(err => {
-      console.error('Video play error:', err);
-      container.classList.remove('loading');
-      container.classList.remove('playing');
-      video.controls = false;
+    containers.forEach(function(container) {
+      container.addEventListener('click', function() {
+        var video = container.querySelector('video');
+        
+        // Pause all other videos first
+        containers.forEach(function(c) {
+          if (c !== container) {
+            var v = c.querySelector('video');
+            v.pause();
+            v.controls = false;
+            c.classList.remove('playing');
+            c.classList.remove('loading');
+          }
+        });
+        
+        // Toggle play/pause for clicked video
+        if (video.paused) {
+          container.classList.add('loading');
+          container.classList.add('playing');
+          video.controls = true;
+          
+          var playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.then(function() {
+              container.classList.remove('loading');
+            }).catch(function(err) {
+              console.error('Video play error:', err);
+              container.classList.remove('loading');
+              container.classList.remove('playing');
+              video.controls = false;
+            });
+          }
+        } else {
+          video.pause();
+        }
+        
+        // Show poster again when video ends
+        video.onended = function() {
+          container.classList.remove('playing');
+          video.controls = false;
+        };
+      });
     });
-  } else {
-    video.pause();
-  }
-  
-  // Show poster again when video ends
-  video.onended = function() {
-    container.classList.remove('playing');
-    video.controls = false;
-  };
-}
+  });
+})();
 </script>

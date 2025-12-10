@@ -82,6 +82,25 @@ author_profile: true
   pointer-events: none;
 }
 
+.video-container.loading .play-button {
+  background: rgba(64, 81, 181, 0.9);
+}
+
+.video-container.loading .play-button::after {
+  border: none;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  border-radius: 50%;
+  border-top: 3px solid #fff;
+  border-right: 3px solid transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .play-button::after {
   content: '';
   width: 0;
@@ -241,6 +260,7 @@ author_profile: true
 <script>
 function playVideo(container) {
   const video = container.querySelector('video');
+  const playButton = container.querySelector('.play-button');
   
   // Pause all other videos first
   document.querySelectorAll('.video-container').forEach(c => {
@@ -249,14 +269,24 @@ function playVideo(container) {
       v.pause();
       v.controls = false;
       c.classList.remove('playing');
+      c.classList.remove('loading');
     }
   });
   
   // Toggle play/pause for clicked video
   if (video.paused) {
+    container.classList.add('loading');
     container.classList.add('playing');
     video.controls = true;
-    video.play();
+    
+    video.play().then(() => {
+      container.classList.remove('loading');
+    }).catch(err => {
+      console.error('Video play error:', err);
+      container.classList.remove('loading');
+      container.classList.remove('playing');
+      video.controls = false;
+    });
   } else {
     video.pause();
   }

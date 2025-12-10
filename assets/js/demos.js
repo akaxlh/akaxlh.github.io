@@ -8,16 +8,24 @@ document.addEventListener('click', function(e) {
   var video = container.querySelector('video');
   var allContainers = document.querySelectorAll('.video-container');
   
-  // Pause all other videos first
+  // Pause and unload all other videos to free memory
   for (var i = 0; i < allContainers.length; i++) {
     var c = allContainers[i];
     if (c !== container) {
       var v = c.querySelector('video');
       v.pause();
+      v.removeAttribute('src');
+      v.load(); // Reset video element to free memory
       v.controls = false;
       c.classList.remove('playing');
       c.classList.remove('loading');
     }
+  }
+  
+  // Restore source if it was removed
+  var source = video.querySelector('source');
+  if (source && !video.src) {
+    video.src = source.getAttribute('src');
   }
   
   // Toggle play/pause for clicked video

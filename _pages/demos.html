@@ -143,6 +143,7 @@ author_profile: true
 <div class="demo-intro">
   <h2>🎬 AI-Generated Content Demos</h2>
   <p>These demos showcase our latest research in AI-generated content (AIGC), including video generation, editing, and multimodal understanding. Check out our projects: <a href="https://github.com/HKUDS/ViMax" style="color: #ffd700;">ViMax</a> and <a href="https://github.com/HKUDS/VideoAgent" style="color: #ffd700;">VideoAgent</a>.</p>
+  <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">📌 Version: v3 - Click anywhere on the video to play</p>
 </div>
 
 <div class="demo-grid">
@@ -258,53 +259,50 @@ author_profile: true
 </div>
 
 <script type="text/javascript">
-(function() {
-  document.addEventListener('DOMContentLoaded', function() {
-    var containers = document.querySelectorAll('.video-container');
+document.addEventListener('click', function(e) {
+  var container = e.target.closest('.video-container');
+  if (!container) return;
+  
+  var video = container.querySelector('video');
+  var allContainers = document.querySelectorAll('.video-container');
+  
+  // Pause all other videos first
+  for (var i = 0; i < allContainers.length; i++) {
+    var c = allContainers[i];
+    if (c !== container) {
+      var v = c.querySelector('video');
+      v.pause();
+      v.controls = false;
+      c.classList.remove('playing');
+      c.classList.remove('loading');
+    }
+  }
+  
+  // Toggle play/pause for clicked video
+  if (video.paused) {
+    container.classList.add('loading');
+    container.classList.add('playing');
+    video.controls = true;
     
-    containers.forEach(function(container) {
-      container.addEventListener('click', function() {
-        var video = container.querySelector('video');
-        
-        // Pause all other videos first
-        containers.forEach(function(c) {
-          if (c !== container) {
-            var v = c.querySelector('video');
-            v.pause();
-            v.controls = false;
-            c.classList.remove('playing');
-            c.classList.remove('loading');
-          }
-        });
-        
-        // Toggle play/pause for clicked video
-        if (video.paused) {
-          container.classList.add('loading');
-          container.classList.add('playing');
-          video.controls = true;
-          
-          var playPromise = video.play();
-          if (playPromise !== undefined) {
-            playPromise.then(function() {
-              container.classList.remove('loading');
-            }).catch(function(err) {
-              console.error('Video play error:', err);
-              container.classList.remove('loading');
-              container.classList.remove('playing');
-              video.controls = false;
-            });
-          }
-        } else {
-          video.pause();
-        }
-        
-        // Show poster again when video ends
-        video.onended = function() {
-          container.classList.remove('playing');
-          video.controls = false;
-        };
+    var playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.then(function() {
+        container.classList.remove('loading');
+      }).catch(function(err) {
+        console.error('Video play error:', err);
+        container.classList.remove('loading');
+        container.classList.remove('playing');
+        video.controls = false;
       });
-    });
-  });
-})();
+    }
+  } else {
+    video.pause();
+  }
+  
+  // Show poster again when video ends
+  video.onended = function() {
+    container.classList.remove('playing');
+    video.controls = false;
+  };
+});
 </script>

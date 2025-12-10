@@ -2,6 +2,9 @@ document.addEventListener('click', function(e) {
   var container = e.target.closest('.video-container');
   if (!container) return;
   
+  // If clicking on video element itself (after it started playing), let native controls handle it
+  if (e.target.tagName === 'VIDEO') return;
+  
   var video = container.querySelector('video');
   var allContainers = document.querySelectorAll('.video-container');
   
@@ -34,8 +37,6 @@ document.addEventListener('click', function(e) {
         video.controls = false;
       });
     }
-  } else {
-    video.pause();
   }
   
   // Show poster again when video ends

@@ -43,7 +43,7 @@ redirect_from:
 
 - **[Under Review]** "ViMax: Agentic Video Generation"<br>
   <span style="color:#4051b5">**#14 Repo of the Day, GitHub Trending Board, GitHub Stars 1400+**</span><br>
-  L. Huang<sup>*</sup>, S. He<sup>*</sup>, H. Zhou<sup>*</sup>, L. Huang<sup>*</sup>, Y. Huang, S. Wu, <b><u>L. Xia</u></b><sup>†</sup>, C. Huang<sup>†</sup><br>
+  L. Huang<sup>*</sup>, S. He<sup>*</sup>, H. Zhou<sup>*</sup>, Y. Huang, S. Wu, <b><u>L. Xia</u></b><sup>†</sup>, C. Huang<sup>†</sup><br>
   [[code & demos]](https://github.com/HKUDS/ViMax)
 
 - **[Under Review]** "VideoAgent: All-in-One Agentic Framework for Video Understanding, Editing, and Remaking"<br>

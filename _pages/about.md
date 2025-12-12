@@ -143,17 +143,17 @@ redirect_from:
 
 ## Work Experience
 
-- **Harbin Institute of Technology (Shenzhen)** &emsp; *11/2024 - Present*<br>
+- **Harbin Institute of Technology (Shenzhen)** &emsp; *11/2025 - Present*<br>
   Professor, School of Computer Science and Technology
 
-- **The University of Hong Kong** &emsp; *11/2024 - 11/2024*<br>
+- **The University of Hong Kong** &emsp; *11/2024 - 11/2025*<br>
   Research Assistant Professor, School of Computing and Data Science
 
 - **The University of Hong Kong** &emsp; *04/2022 - 11/2024*<br>
   Postdoctoral Fellow, Department of Computer Science
 
-- **Microsoft Research Asia** &emsp; *09/2016 - 05/2017*<br>
-  Research Development Intern, Innovation Engineering Group
+<!-- - **Microsoft Research Asia** &emsp; *09/2016 - 05/2017*<br>
+  Research Development Intern, Innovation Engineering Group -->
 
 
 ## Education Background

@@ -14,3 +14,4 @@ Receives over **12k GitHub Stars**
 
 [Paper](https://arxiv.org/pdf/2410.05779) | [Code](https://github.com/HKUDS/LightRAG)
 
+

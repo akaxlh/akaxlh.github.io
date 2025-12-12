@@ -10,7 +10,7 @@ author_profile: true
 
 ## 招生信息
 
-<p style="text-align:justify">2026级博士、硕士研究生招生正在进行中。如果您对我的研究方向感兴趣，希望一起探索AI领域的前沿问题，欢迎提前联系。同时长期接收本科生、研究生实习生，也支持远程实习。有意向的同学可发送邮件至<span style="color:darkred"><b>xialh@hit.edu.cn</b></span>，并附上个人简历。</p>
+<p style="text-align:justify">2027级博士、2026级硕士研究生招生正在进行中。如果您对我的研究方向感兴趣，希望一起探索AI领域的前沿问题，欢迎提前联系。同时长期接收本科生、研究生实习生，也支持远程实习。有意向的同学可发送邮件至<span style="color:darkred"><b>xialh@hit.edu.cn</b></span>，并附上个人简历。</p>
 
 ## 荣誉与奖项
 

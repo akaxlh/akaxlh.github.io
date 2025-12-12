@@ -13,7 +13,7 @@ redirect_from:
 
 ## Join Us!
 
-<p style="text-align:justify">I am actively recruiting <span style="color:darkred"><b>Ph.D./M.S. students for 2026</b></span> admission. I also regularly accept <span style="color:darkred"><b>undergraduate and graduate student interns</b></span>, with remote internship opportunities available. Please feel free to <span style="color:darkred"><b>contact me at xialh@hit.edu.cn</b></span> along with your CV.</p>
+<p style="text-align:justify">I am actively recruiting <span style="color:darkred"><b>Ph.D. (2027) and M.S. (2026) students</b></span>. I also regularly accept <span style="color:darkred"><b>undergraduate and graduate student interns</b></span>, with remote internship opportunities available. Please feel free to <span style="color:darkred"><b>contact me at xialh@hit.edu.cn</b></span> along with your CV.</p>
 
 ## Honors and Awards
 
